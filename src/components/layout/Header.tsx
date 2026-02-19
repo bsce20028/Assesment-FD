@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Header.scss';
 
 const Header: React.FC = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <header className="header">
       <div className="header__container">
+        <button className="header__hamburger" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
+
         <div className="header__logo">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path

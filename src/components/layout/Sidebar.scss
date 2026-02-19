@@ -11,8 +11,67 @@
     width: 100%;
     border-right: none;
     border-bottom: 1px solid $border-color;
-    overflow-x: auto;
-    overflow-y: visible;
+    padding: $spacing-md;
+  }
+
+  &__mobile-dropdown {
+    display: none;
+
+    @include mobile {
+      display: block;
+      position: relative;
+    }
+  }
+
+  &__dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    background: $white;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-base;
+    color: $text-primary;
+    cursor: pointer;
+
+    svg {
+      color: $text-secondary;
+    }
+  }
+
+  &__dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: $spacing-xs;
+    background: $white;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    box-shadow: $shadow-md;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  &__dropdown-item {
+    display: block;
+    padding: $spacing-sm $spacing-md;
+    color: $text-secondary;
+    text-decoration: none;
+    transition: background-color $transition-fast;
+
+    &:hover {
+      background-color: $background;
+    }
+
+    &--active {
+      color: $primary-color;
+      background-color: $primary-light;
+      font-weight: $font-weight-medium;
+    }
   }
 
   &__nav {
@@ -20,9 +79,7 @@
     gap: $spacing-xs;
 
     @include mobile {
-      flex-direction: row;
-      gap: $spacing-sm;
-      overflow-x: auto;
+      display: none;
     }
   }
 

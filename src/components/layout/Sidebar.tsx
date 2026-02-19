@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Sidebar.scss';
 
@@ -11,6 +11,7 @@ interface Step {
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const steps: Step[] = [
     { id: 'location', label: 'Location', path: '/location', completed: true },
@@ -26,8 +27,41 @@ const Sidebar: React.FC = () => {
     { id: 'easy-access', label: 'Easy Access', path: '/easy-access', completed: false },
   ];
 
+  const currentStep = steps.find(step => step.path === location.pathname);
+
   return (
     <aside className="sidebar">
+      {/* Mobile Dropdown */}
+      <div className="sidebar__mobile-dropdown">
+        <button 
+          className="sidebar__dropdown-trigger"
+          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+        >
+          <span>{currentStep?.label || 'Select Step'}</span>
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+            <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+        {isDropdownOpen && (
+          <div className="sidebar__dropdown-menu">
+            {steps.map((step) => {
+              const isActive = location.pathname === step.path;
+              return (
+                <a
+                  key={step.id}
+                  href={step.path}
+                  className={`sidebar__dropdown-item ${isActive ? 'sidebar__dropdown-item--active' : ''}`}
+                  onClick={() => setIsDropdownOpen(false)}
+                >
+                  {step.label}
+                </a>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Navigation */}
       <nav className="sidebar__nav">
         {steps.map((step) => {
           const isActive = location.pathname === step.path;

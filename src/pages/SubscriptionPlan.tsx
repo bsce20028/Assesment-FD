@@ -124,6 +124,16 @@ const SubscriptionPlan: React.FC = () => {
               key={plan.id}
               className={`plan-card ${selectedPlan === plan.id ? 'plan-card--selected' : ''}`}
               onClick={() => handlePlanSelect(plan.id)}
+              role="button"
+              tabIndex={0}
+              aria-pressed={selectedPlan === plan.id}
+              aria-label={`Select ${plan.name} plan for ${plan.price}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  handlePlanSelect(plan.id);
+                }
+              }}
             >
               <div className="plan-card__header">
                 <div className="plan-card__info">
@@ -226,6 +236,7 @@ const SubscriptionPlan: React.FC = () => {
             className="subscription-plan__button"
             onClick={handleNext}
             disabled={!selectedPlan}
+            aria-label="Proceed to next step"
           >
             Next
           </button>

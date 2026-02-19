@@ -25,7 +25,7 @@
     background-color: $background-light;
     overflow-y: auto;
     flex: 1;
-    max-width: 1200px;
+    max-width: 1000px;
     @include custom-scrollbar;
 
     @include mobile {

@@ -21,7 +21,7 @@
   &__container {
     background: $white;
     border-radius: $border-radius-lg;
-    padding: 40px;
+    padding: 23px 40px 60px 40px;
     box-shadow: $shadow-sm;
     min-height: 654px;
     height: auto;
@@ -88,7 +88,7 @@
 
   &__info {
     margin-bottom: $spacing-xl;
-    padding: $spacing-lg;
+    padding-top: $spacing-lg;
     background-color: $background-light;
     border-radius: $border-radius-md;
     text-align: left;
@@ -148,9 +148,6 @@
     }
   }
 
-  &__card-details {
-    margin-bottom: $spacing-2xl;
-  }
 
   &__card-title {
     font-size: $font-size-xxl;
@@ -213,6 +210,11 @@
       background-color: color.scale(#f4d35e, $lightness: -7.5%);
       transform: translateY(-1px);
       box-shadow: $shadow-md;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-color;
+      outline-offset: 2px;
     }
 
     &:active:not(:disabled) {
@@ -486,7 +488,7 @@
       color: $primary-color;
       
       span {
-        color: $primary-color;
+        color: $text-primary;
       }
     }
     

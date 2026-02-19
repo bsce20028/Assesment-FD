@@ -237,7 +237,7 @@ const DeviceManagement: React.FC = () => {
         </div>
 
         <div className="device-management__actions">
-          <button className="device-management__button" onClick={handleNext}>
+          <button className="device-management__button" onClick={handleNext} aria-label="Proceed to next step">
             Next
           </button>
         </div>

@@ -18,7 +18,7 @@
   &__container {
     background: $white;
     border-radius: $border-radius-lg;
-    padding: 40px;
+    padding: 23px 40px 60px 40px;
     box-shadow: $shadow-sm;
     min-height: 654px;
     height: auto;
@@ -89,6 +89,11 @@
       background-color: #e7c651;
       transform: translateY(-1px);
       box-shadow: $shadow-md;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $primary-color;
+      outline-offset: 2px;
     }
 
     &:active {
