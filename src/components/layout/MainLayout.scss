@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+
+  &__body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    justify-content: center;
+    align-items: flex-start;
+    padding: $spacing-2xl 0;
+
+    @include mobile {
+      flex-direction: column;
+      padding: $spacing-md 0;
+    }
+  }
+
+  &__content {
+    background-color: $background-light;
+    overflow-y: auto;
+    flex: 1;
+    max-width: 1200px;
+    @include custom-scrollbar;
+
+    @include mobile {
+      padding: 0 $spacing-md;
+    }
+  }
+}

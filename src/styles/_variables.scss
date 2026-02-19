@@ -1,0 +1,82 @@
+// Colors
+$primary-color: #00A3AD; 
+$primary-dark: #169f9a;
+$primary-light: #e6f7f7;
+
+$text-primary: #026786;
+$text-secondary: #7f8c8d;
+$text-light: #95a5a6;
+$text-dark: #4A4A4A;
+
+$border-color: #e0e6ed;
+$border-light: #f0f3f7;
+
+$white: #ffffff;
+$background: #f8f9fa;
+$background-light: #fafbfc;
+
+$success: #1dbab4;
+$info: #3498db;
+$warning: #f39c12;
+
+$primary-white: #FFFFFF;
+
+// Plan pricing colors
+$plan-free: $text-secondary;
+$plan-good: #3498db;
+$plan-best: #1dbab4;
+
+// Typography
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 15px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 22px;
+$font-size-2xl: 24px;
+$font-size-3xl: 28px;
+$font-size-4xl: 32px;
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1280px;
+
+// Transitions
+$transition-fast: 0.15s ease-in-out;
+$transition-base: 0.3s ease-in-out;
+$transition-slow: 0.5s ease-in-out;
+
+// Layout
+$sidebar-width: 200px;
+$header-height: 73px;

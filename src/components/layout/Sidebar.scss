@@ -1,0 +1,80 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  background: $white;
+
+  @include custom-scrollbar;
+
+  @include mobile {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid $border-color;
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+
+  &__nav {
+    @include flex-column;
+    gap: $spacing-xs;
+
+    @include mobile {
+      flex-direction: row;
+      gap: $spacing-sm;
+      overflow-x: auto;
+    }
+  }
+
+  &__item {
+    @include flex-between;
+    padding: $spacing-md $spacing-md;
+    border-radius: $border-radius-md;
+    color: $text-secondary;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+    transition: all $transition-fast;
+    cursor: pointer;
+
+    @include mobile {
+      flex-shrink: 0;
+      min-width: 120px;
+      padding: $spacing-sm $spacing-md;
+    }
+
+    &:hover {
+      background-color: $background;
+    }
+
+    &--active {
+      color: $primary-color;
+      background-color: $primary-light;
+      border-left: 3px solid $primary-color;
+      padding-left: calc(#{$spacing-md} - 3px);
+
+      @include mobile {
+        border-left: none;
+        border-bottom: 3px solid $primary-color;
+        padding-left: $spacing-md;
+        padding-bottom: calc(#{$spacing-sm} - 3px);
+      }
+    }
+
+    &--completed {
+      .sidebar__label {
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__label {
+    flex: 1;
+    white-space: nowrap;
+  }
+
+  &__check {
+    margin-left: $spacing-sm;
+    @include flex-center;
+  }
+}

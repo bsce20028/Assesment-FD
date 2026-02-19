@@ -1,0 +1,417 @@
+@use 'sass:color';
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.subscription-plan {
+  margin: 0 auto;
+  border: 1px solid #E6E6E6;
+  border-radius: $border-radius-lg;
+  max-height: 90vh;
+  overflow-y: auto;
+  
+  // Hide scrollbar for Chrome, Safari and Opera
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+  // Hide scrollbar for IE, Edge and Firefox
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &__container {
+    background: $white;
+    border-radius: $border-radius-lg;
+    padding: 40px;
+    box-shadow: $shadow-sm;
+    min-height: 654px;
+    height: auto;
+    
+    @include mobile {
+      padding: $spacing-lg;
+      border-radius: 0;
+      min-height: auto;
+    }
+  }
+
+  &__header {
+    margin-bottom: $spacing-xl;
+  }
+
+  &__title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    font-family: 'Museo Sans Rounded', sans-serif;
+    line-height: 56px;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+
+    @include mobile {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-xl;
+    color: $text-dark;
+  }
+
+  &__select-label {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-normal;
+    color: $text-dark;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-lg;
+    margin-bottom: $spacing-2xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-md;
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__info {
+    margin-bottom: $spacing-xl;
+    padding: $spacing-lg;
+    background-color: $background-light;
+    border-radius: $border-radius-md;
+
+    p {
+      font-size: $font-size-xl;
+      color: $text-dark;
+      margin-bottom: $spacing-sm;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__link {
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__note {
+    line-height: 1.6;
+  }
+
+  &__addons {
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__addons-title {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-medium;
+    color: $text-dark;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__addons-list {
+    display: flex;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__card-details {
+    margin-bottom: $spacing-2xl;
+  }
+
+  &__card-title {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-medium;
+    color: $text-dark;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__card-form {
+    max-width: 600px;
+  }
+
+  &__card-note {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    margin-top: $spacing-md;
+    line-height: 1.5;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+
+    @include mobile {
+      justify-content: stretch;
+    }
+  }
+
+  &__button {
+    background-color: #f4d35e;
+    color: $text-primary;
+    border: none;
+    border-radius: $border-radius-md;
+    padding: $spacing-md $spacing-2xl;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: all $transition-fast;
+    min-width: 200px;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: color.scale(#f4d35e, $lightness: -7.5%);
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.plan-card {
+  border: 2px solid $border-color;
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  cursor: pointer;
+  transition: all $transition-base;
+  background: $white;
+
+  &:hover {
+    border-color: $primary-color;
+    box-shadow: $shadow-md;
+  }
+
+  &--selected {
+    border-color: $primary-color;
+    background-color: $primary-light;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-md;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__radio {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__radio-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &__radio-custom {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $border-color;
+    border-radius: 50%;
+    position: relative;
+    transition: all $transition-fast;
+
+    .plan-card:hover &,
+    .plan-card--selected & {
+      border-color: $primary-color;
+    }
+
+    .plan-card__radio-input:checked + & {
+      border-color: $primary-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__features {
+    list-style: none;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+    font-size: $font-size-xs;
+    font-family: 'Museo Sans Rounded', sans-serif;
+    line-height: 18px;
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: $text-light;
+
+    .plan-card--selected & {
+      color: $primary-color;
+    }
+  }
+
+  &__price {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    text-align: left;
+
+    .plan-card--selected & {
+      color: $text-primary;
+    }
+  }
+}
+
+.addon-option {
+  flex: 0 0 auto;
+
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__text {
+    font-size: $font-size-base;
+    color: $primary-color;
+    font-weight: $font-weight-medium;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &__badge {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    font-weight: $font-weight-normal;
+    font-style: italic;
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__radio {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $border-color;
+    border-radius: 50%;
+    position: relative;
+    transition: all $transition-fast;
+    flex-shrink: 0;
+
+    .addon-option__checkbox:checked + & {
+      border-color: $primary-color;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $primary-color;
+      }
+    }
+
+    .addon-option__checkbox:disabled + & {
+      opacity: 0.5;
+    }
+  }
+}
+
+.card-input {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-md;
+  background: $white;
+
+  &__icon {
+    flex-shrink: 0;
+    color: $text-light;
+  }
+
+  &__field {
+    border: none;
+    outline: none;
+    font-size: $font-size-base;
+    color: $text-primary;
+    flex: 1;
+    min-width: 0;
+
+    &::placeholder {
+      color: $text-light;
+    }
+
+    &--small {
+      flex: 0 0 80px;
+    }
+  }
+}

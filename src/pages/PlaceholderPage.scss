@@ -1,0 +1,42 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.placeholder-page {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__container {
+    background: $white;
+    border-radius: $border-radius-lg;
+    padding: $spacing-3xl;
+    box-shadow: $shadow-sm;
+    text-align: center;
+
+    @include mobile {
+      padding: $spacing-xl;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+
+    @include mobile {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__note {
+    font-size: $font-size-base;
+    color: $text-light;
+    font-style: italic;
+  }
+}
