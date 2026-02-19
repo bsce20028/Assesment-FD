@@ -32,7 +32,14 @@ export interface ListingState {
     plan: 'free' | 'good' | 'best' | null;
   };
   device: {
-    deviceType: string;
+    devices: {
+      id: number;
+      name: string;
+      deviceType: string;
+      serialNumber: string;
+      bringYourOwn: boolean;
+      image?: string | null;
+    }[];
   };
   easyAccess: {
     enabled: boolean;
@@ -70,7 +77,40 @@ const initialState: ListingState = {
     plan: null,
   },
   device: {
-    deviceType: '',
+    devices: [
+      {
+        id: 1,
+        name: 'Device 1',
+        deviceType: 'Primary GPS',
+        serialNumber: '',
+        bringYourOwn: true,
+        image: null,
+      },
+      {
+        id: 2,
+        name: 'Device 2',
+        deviceType: 'Secondary GPS',
+        serialNumber: '',
+        bringYourOwn: true,
+        image: null,
+      },
+      {
+        id: 3,
+        name: 'Device 3',
+        deviceType: 'Drive mate Go',
+        serialNumber: '',
+        bringYourOwn: false,
+        image: null,
+      },
+      {
+        id: 4,
+        name: 'Device 4',
+        deviceType: 'Lockbox',
+        serialNumber: '',
+        bringYourOwn: false,
+        image: null,
+      },
+    ],
   },
   easyAccess: {
     enabled: false,

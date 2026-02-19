@@ -1,0 +1,261 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.device-management {
+  margin: 0 auto;
+  border: 1px solid #E6E6E6;
+  border-radius: $border-radius-lg;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &__container {
+    background: $white;
+    border-radius: $border-radius-lg;
+    padding: 40px;
+    box-shadow: $shadow-sm;
+    min-height: 654px;
+    height: auto;
+
+    @include mobile {
+      padding: $spacing-lg;
+      border-radius: 0;
+      min-height: auto;
+    }
+  }
+
+  &__header {
+    margin-bottom: $spacing-xl;
+  }
+
+  &__title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    font-family: 'Museo Sans Rounded', sans-serif;
+    line-height: 56px;
+    color: $text-primary;
+    margin-bottom: $spacing-sm;
+
+    @include mobile {
+      font-size: $font-size-2xl;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-size-xl;
+    color: $text-dark;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: $spacing-xl;
+
+    @include mobile {
+      justify-content: stretch;
+    }
+  }
+
+  &__button {
+    background-color: #f4d35e;
+    color: $text-primary;
+    border: none;
+    border-radius: $border-radius-md;
+    padding: $spacing-md $spacing-2xl;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: all $transition-fast;
+    min-width: 200px;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: #e7c651;
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.device-card {
+  border-top: 1px solid $border-color;
+  padding-top: $spacing-lg;
+
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: $spacing-2xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+  }
+
+  &__name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__field-group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+
+    &--inline {
+      font-size: $font-size-base;
+      color: $text-dark;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  &__input {
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-base;
+    outline: none;
+
+    &::placeholder {
+      color: $text-light;
+    }
+  }
+
+  &__toggle-row {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-lg;
+
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+
+  &__toggle-text {
+    max-width: 320px;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    margin-top: $spacing-xs;
+    line-height: 1.5;
+  }
+
+  &__upload {
+    max-width: 340px;
+  }
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e0e0e0;
+    transition: $transition-fast;
+    border-radius: 34px;
+
+    &::before {
+      position: absolute;
+      content: '';
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: $white;
+      transition: $transition-fast;
+      border-radius: 50%;
+    }
+  }
+
+  // Checked state
+  input:checked + .toggle-switch__slider {
+    background-color: $primary-color;
+  }
+
+  input:checked + .toggle-switch__slider::before {
+    transform: translateX(20px);
+  }
+}
+
+.upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed $border-color;
+  border-radius: $border-radius-sm;
+  height: 140px;
+  cursor: pointer;
+  background-color: $background-light;
+
+  &__input {
+    display: none;
+  }
+
+  &__text {
+    color: $info;
+    font-size: $font-size-base;
+    text-decoration: underline;
+  }
+}
+
+

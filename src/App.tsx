@@ -8,6 +8,7 @@ import { loadFromLocalStorage, saveToLocalStorage } from './utils/localStorage';
 import MainLayout from './components/layout/MainLayout';
 import SubscriptionPlan from './pages/SubscriptionPlan';
 import PlaceholderPage from './pages/PlaceholderPage';
+import DeviceManagement from './pages/DeviceManagement';
 import './styles/globals.scss';
 
 const AppContent: React.FC = () => {
@@ -69,10 +70,7 @@ const AppContent: React.FC = () => {
             element={<PlaceholderPage title="Insurance" description="Select insurance options" />}
           />
           <Route path="/subscription" element={<SubscriptionPlan />} />
-          <Route
-            path="/device"
-            element={<PlaceholderPage title="Device" description="Set up your device" />}
-          />
+          <Route path="/device" element={<DeviceManagement />} />
           <Route
             path="/easy-access"
             element={<PlaceholderPage title="Easy Access" description="Configure easy access" />}

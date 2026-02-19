@@ -153,11 +153,11 @@ const SubscriptionPlan: React.FC = () => {
             <h3 className="subscription-plan__addons-title">Select add-ons for your subscription</h3>
             <div className="subscription-plan__addons-list">
               {getAddonsForPlan(selectedPlan).map((addon) => (
-                <div key={addon.id} className="addon-option">
+                <div key={addon.id} className={`addon-option ${addon.disabled ? 'addon-option--disabled' : ''}`}>
+                  {addon.comingSoon && <span className="addon-option__badge">Coming soon</span>}
                   <label className="addon-option__label">
                     <span className="addon-option__text">
-                      {addon.label}
-                      {addon.comingSoon && <span className="addon-option__badge">Coming soon</span>}
+                      <span>{addon.label}</span>
                     </span>
                     <input
                       type="checkbox"
@@ -221,7 +221,7 @@ const SubscriptionPlan: React.FC = () => {
           </p>
         </div>
 
-        {/* <div className="subscription-plan__actions">
+        <div className="subscription-plan__actions">
           <button
             className="subscription-plan__button"
             onClick={handleNext}
@@ -229,7 +229,7 @@ const SubscriptionPlan: React.FC = () => {
           >
             Next
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );
